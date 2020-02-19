@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import UserCard from './components/UserCard';
-import FollowerCard from './components/FollowerCard';
+import FollowerList from './components/FollowerList';
 
 
 class App extends React.Component {
@@ -25,9 +25,8 @@ class App extends React.Component {
       })
     // console.log("componentDidMount is running")
 
-
     axios
-      .get(` https://api.github.com/users/whitneyxlachelle/followers`)
+      .get(`https://api.github.com/users/whitneyxlachelle/followers`)
       .then(result => {
         //console.log(result);
         this.setState({ followers: result.data })
@@ -46,16 +45,14 @@ class App extends React.Component {
         <div>
           <h1>User Cards</h1>
           <UserCard
-            user={this.state.user} />
+            user={this.state.user}
+          />
         </div>
-
-        <FollowerCard
+        <FollowerList
           followers={this.state.followers} />
-
       </div>
     )
   }
-
 }
 
 export default App;
